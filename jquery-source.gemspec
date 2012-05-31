@@ -4,8 +4,8 @@ require File.expand_path('../lib/jquery-source/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Daniel X. Moore"]
   gem.email         = ["yahivin@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{An asset gem for jquery}
+  gem.summary       = %q{The source for jquery as a gem}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
