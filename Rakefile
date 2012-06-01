@@ -26,7 +26,7 @@ def make_version(version)
   download(version)
   write_version_file(version)
   `git ci -am "jQuery #{version}"`
-  `rake release`
+  puts `rake release`
 end
 
 task :make_all_versions do
