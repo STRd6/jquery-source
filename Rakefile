@@ -25,11 +25,8 @@ end
 def make_version(version)
   download(version)
   write_version_file(version)
-
-  %w[build release].each do |t|
-    Rake::Task[t].reenable
-    Rake::Task[t].invoke
-  end
+  `git ci -am "jQuery #{version}"`
+  `rake release`
 end
 
 task :make_all_versions do
