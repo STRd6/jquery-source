@@ -2,12 +2,12 @@ require "jquery-source/version"
 
 # Check for Rails or Sprockets
 if defined? ::Rails::Engine
-  require "jquery-source/rails"
-elsif defined? ::Sprockets
-  require "jquery-source/sprockets"
-end
-
-module Jquery
-  module Source
+  class Engine < ::Rails::Engine
+    config.paths['app/assets'] = "source"
   end
+elsif defined? ::Sprockets
+  root_dir = File.expand_path(File.dirname(File.dirname(__FILE__)))
+  asset_dir = File.join(root_dir, "source")
+
+  ::Sprockets.append_path asset_dir
 end
