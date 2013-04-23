@@ -8,7 +8,7 @@ def download(version)
 end
 
 def micro
-  ".0"
+  ".1"
 end
 
 def write_version_file(version)
