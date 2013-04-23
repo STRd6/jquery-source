@@ -1,5 +1,5 @@
 module Jquery
   module Source
-    VERSION = "1.7.2"
+    VERSION = "1.8.0"
   end
 end
