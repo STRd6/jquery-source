@@ -7,12 +7,16 @@ def download(version)
   `wget -O source/jquery.js #{source_url}`
 end
 
+def micro
+  ".0"
+end
+
 def write_version_file(version)
   version_file_text =
   <<-eos.gsub(/^ {4}/, '')
     module Jquery
       module Source
-        VERSION = "#{version}"
+        VERSION = "#{version}#{micro}"
       end
     end
   eos
@@ -23,7 +27,6 @@ def write_version_file(version)
 end
 
 def make_version(version)
-  micro = ".0"
 
   download(version)
   write_version_file(version)
@@ -32,10 +35,12 @@ def make_version(version)
   sh "rake release"
 end
 
-task :make_all_versions do
-  versions = "1.2.6, 1.3.0, 1.3.1, 1.3.2, 1.4.0, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.5.0, 1.5.1, 1.5.2, 1.6.0, 1.6.1, 1.6.2, 1.6.3, 1.6.4, 1.7.0, 1.7.1".split(", ")
-  versions = versions + "2.0.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0, 1.7.2".split(", ").reverse()
+def versions
+  "1.2.6, 1.3.0, 1.3.1, 1.3.2, 1.4.0, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.5.0, 1.5.1, 1.5.2, 1.6.0, 1.6.1, 1.6.2, 1.6.3, 1.6.4, 1.7.0, 1.7.1".split(", ") +
+  "2.0.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0, 1.7.2".split(", ").reverse()
+end
 
+task :make_all_versions do
   versions.each do |version|
     make_version(version)
   end
