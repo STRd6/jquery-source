@@ -47,5 +47,5 @@ task :make_all_versions do
 end
 
 task :make_version do
-  make_version("1.9.1")
+  make_version("1.6.1")
 end
